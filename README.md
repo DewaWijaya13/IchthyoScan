@@ -1,3 +1,12 @@
+---
+title: IchthyoScan API
+emoji: 🐟
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+pinned: false
+---
+
 # 🐟 IchthyoScan
 
 IchthyoScan adalah aplikasi web cerdas untuk memindai dan mengklasifikasikan jenis ikan laut secara otomatis menggunakan teknologi Machine Learning (EfficientNet-B0). Aplikasi ini terdiri dari antarmuka modern yang dibangun menggunakan **React (Vite)** dan server *backend* yang tangguh menggunakan **FastAPI (Python)**.
