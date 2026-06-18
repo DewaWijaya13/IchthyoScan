@@ -102,7 +102,8 @@ async def root():
         "status": "online",
         "model_loaded": "ikan_classifier" in ml_models,
         "model_path": MODEL_PATH,
-        "model_exists": os.path.exists(MODEL_PATH)
+        "model_exists": os.path.exists(MODEL_PATH),
+        "model_size_bytes": os.path.getsize(MODEL_PATH) if os.path.exists(MODEL_PATH) else 0
     }
 
 @app.post("/predict")
