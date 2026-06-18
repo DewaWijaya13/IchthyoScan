@@ -1,5 +1,5 @@
-# Force rebuild 1
-FROM python:3.9-slim
+# Force rebuild 2
+FROM python:3.10-slim
 
 # Set working directory
 WORKDIR /code
