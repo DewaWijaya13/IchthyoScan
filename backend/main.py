@@ -58,10 +58,10 @@ app = FastAPI(
     lifespan=lifespan
 )
 
-# Konfigurasi CORS agar React (localhost:5173) bisa memanggil API ini
+# Konfigurasi CORS agar React (localhost:5173) dan Vercel bisa memanggil API ini
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=["*"], # Mengizinkan semua origin termasuk dari Vercel
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
