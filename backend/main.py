@@ -21,6 +21,12 @@ CONFIDENCE_THRESHOLD = 0.70
 ml_models = {}
 
 
+# Custom Dense to ignore quantization_config bug
+class SafeDense(tf.keras.layers.Dense):
+    def __init__(self, **kwargs):
+        kwargs.pop("quantization_config", None)
+        super().__init__(**kwargs)
+
 # ==========================================
 # Lifespan: Memuat Model Saat Startup
 # ==========================================
@@ -33,7 +39,11 @@ async def lifespan(app: FastAPI):
         print(f"[ERROR] File model tidak ditemukan: {MODEL_PATH}")
     else:
         try:
-            model = tf.keras.models.load_model(MODEL_PATH, compile=False)
+            model = tf.keras.models.load_model(
+                MODEL_PATH, 
+                compile=False,
+                custom_objects={"Dense": SafeDense}
+            )
             ml_models["ikan_classifier"] = model
             print("[SUCCESS] Model (.keras) berhasil dimuat ke memori!")
             print(f"[INFO] Input shape: {model.input_shape}")
