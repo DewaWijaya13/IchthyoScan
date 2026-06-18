@@ -100,7 +100,9 @@ async def root():
     return {
         "name": "IchthyoScan API",
         "status": "online",
-        "model_loaded": "ikan_classifier" in ml_models
+        "model_loaded": "ikan_classifier" in ml_models,
+        "model_path": MODEL_PATH,
+        "model_exists": os.path.exists(MODEL_PATH)
     }
 
 @app.post("/predict")
